@@ -1,0 +1,75 @@
+# 仿真参数模板
+# 2026/04/17
+
+simulation:
+  # ========== 基础设置（第一阶段必须有）==========
+  basic:
+    temperature_K: 300              # 温度 [K]
+    solver_mode: "steady"           # steady / transient
+
+  # ========== 电极偏置（第一阶段必须有）==========
+  electrodes:
+    anode:
+      type: "Ohmic"
+      voltage_sweep:
+        start_V: 0.0
+        end_V: 1.0
+        step_V: 0.1                 # 可调整为 0.05 或 0.01
+      # 也可指定特定电压列表
+      # voltage_list_V: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+
+    cathode:
+      type: "Ohmic"
+      voltage_V: 0.0               # 接地
+
+  # ========== 网格控制（第一阶段必须有）==========
+  mesh:
+    global_coarsening: [5.0, 5.0]  # 全局粗糙因子 [x, y]
+
+    # TB 区域网格加密（第一阶段关键）
+    tb_refinement:
+      enable: true
+      min_scale_nm: 0.5            # TB 区域最小网格 [nm]
+      max_cells: 10000             # 最大网格单元数（防内存溢出）
+
+    # 电极区域网格
+    electrode_refinement:
+      enable: true
+      min_scale_nm: 1.0            # 电极附近最小网格 [nm]
+
+  # ========== 求解器参数（第一阶段可选，后续调优）==========
+  solver:
+    # 默认参数（第一阶段使用）
+    default:
+      max_iterations: 100
+      convergence_criterion: 1e-4
+
+    # 如收敛困难，可尝试以下参数
+    # conservative:
+    #   max_iterations: 200
+    #   convergence_criterion: 1e-3
+    #   damping_factor: 0.5
+
+  # ========== 输出控制（第一阶段必须有）==========
+  output:
+    # 需要输出的物理量
+    quantities:
+      - "potential"                # 电势
+      - "electron_density"         # 电子浓度
+      - "hole_density"             # 空穴浓度
+      - "current_density"           # 电流密度
+      - "ElectricField"             # 电场（可选）
+
+    # Linecut 位置
+    linecut:
+      horizontal:
+        y_nm: 100                  # 横向截线（HEIGHT/2 = 100nm）
+      # vertical:                  # 纵向截线（可选）
+      #   x_nm: 250
+
+  # ========== 参数版本跟踪 ==========
+  param_version:
+    simulation_version: "v1.0"
+    source: "Initial setup"
+    notes: "网格和求解器参数待 SDevice 测试后调优"
+    last_updated: "2026/04/17"

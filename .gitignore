@@ -1,0 +1,54 @@
+# Output data (large simulation results)
+output/
+*.plt
+*.tdr
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+env/
+venv/
+.venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+*.pem
+*.key
+*.p12
+credentials*
+secrets*
+
+# Temp files
+temp_*
+*.tmp
+
+# Sentaurus intermediate files
+*.cmd.bak
+*.par.bak
+*.sdb/
+*.sdt/
+
+# Simulation state (SQLite)
+automation/state/
+*.db

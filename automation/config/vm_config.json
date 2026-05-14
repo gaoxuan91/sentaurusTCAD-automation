@@ -1,0 +1,21 @@
+{
+  "vm_connection": {
+    "ip": "YOUR_VM_IP",
+    "username": "tcad",
+    "password": "YOUR_PASSWORD",
+    "port": 22,
+    "project_root_vm": "YOUR_VM_PROJECT_PATH/"
+  },
+  "sentaurus": {
+    "version": "W-2024.09-SP1",
+    "bin_path": "/usr/synopsys/sentaurus/W-2024.09-SP1/bin/",
+    "setup_script": "/usr/synopsys/sentaurus/W-2024.09-SP1/setup.sh"
+  },
+  "paths": {
+    "host_project_root": "./",
+    "vm_project_root": "YOUR_VM_PROJECT_PATH/",
+    "swb_project": "swb/YOUR_PROJECT_NAME/",
+    "output": "output/"
+  },
+  "notes": "VM 连接配置 - 第二阶段 Python 自动化使用"
+}

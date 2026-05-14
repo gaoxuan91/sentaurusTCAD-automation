@@ -1,0 +1,46 @@
+# CsPbBr3 Bulk 参数模板
+# 来源: 文献整理 + 占位
+# 2026/04/17
+
+bulk:
+  # ========== 电子结构（第一阶段必须有）==========
+  band_structure:
+    Bandgap_Eg_eV: 2.30          # 带隙 [eV] - 文献值
+    Electron_Affinity_Chi_eV: 3.4    # 电子亲和势 [eV] - 文献值
+    Relative_Permittivity_eps: 20.5   # 相对介电常数 - 文献值
+
+  # ========== 有效态密度（第一阶段必须有）==========
+  effective_densities:
+    Conduction_Band_Density_Nc_cm3: 1.424e16   # [cm⁻³] - 文献值
+    Valence_Band_Density_Nv_cm3: 1.224e16      # [cm⁻³] - 文献值
+
+  # ========== 迁移率（第一阶段必须有）==========
+  mobility:
+    Electron_Mobility_mun_cm2_Vs: 60.0    # 电子迁移率 [cm²/(V·s)] - 文献值
+    Hole_Mobility_mup_cm2_Vs: 50.0         # 空穴迁移率 [cm²/(V·s)] - 文献值
+
+  # ========== 载流子寿命（第一阶段必须有）==========
+  carrier_lifetime:
+    Carrier_Lifetime_tau_us: 10            # 载流子寿命 [μs] - 估计
+    # 注: Sentaurus 中需要分别设置电子和空穴寿命，此处为统一占位
+
+  # ========== 掺杂（第一阶段必须有）==========
+  doping:
+    Background_Doping_cm3: 0                # 背景掺杂 [cm⁻³] - 本征
+    Dopant_Type: "intrinsic"                # n / p / intrinsic
+
+  # ========== 体缺陷（第一阶段必须有）==========
+  bulk_defect:
+    Background_Trap_Density_cm3: 8e9        # 体缺陷密度 [cm⁻³] - 文献值
+    Trap_Energy_Level_eV: 0.524             # 陷阱能级 [eV] - 文献值
+
+  # ========== 可选参数（第二阶段）==========
+  # Temperature_K: 300
+  # Optical_Generation: "uniform"  # uniform / AM1.5 / 自定义
+
+# ========== 参数版本跟踪 ==========
+param_version:
+  bulk_version: "v1.0"
+  source: "Literature extraction"
+  notes: "第一阶段占位值，需文献约束"
+  last_updated: "2026/04/17"

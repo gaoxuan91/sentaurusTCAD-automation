@@ -1,0 +1,89 @@
+# TB (Twin Boundary) 参数模板
+# 2026/04/17
+
+tb:
+  # ========== TB 启用控制（第一阶段必须有）==========
+  enable: false              # true / false
+  mode: "vertical"           # vertical / parallel / custom_angle
+  count: 1                   # TB 数量
+
+  # ========== TB 几何（第一阶段必须有）==========
+  geometry:
+    width_nm: 3.0            # TB 窄区域宽度 [nm]
+    # length_nm 由 bulk 尺寸自动决定（贯穿 bulk）
+
+  # ========== TB 位置（第一阶段必须有）==========
+  position:
+    # 垂直 TB: X 坐标范围 [nm]
+    x_start_nm: 248.5        # vertical TB 起始位置
+    x_end_nm: 251.5          # vertical TB 结束位置
+
+    # 平行 TB: Y 坐标范围 [nm]
+    y_start_nm: 98.5         # parallel TB 起始位置
+    y_end_nm: 101.5          # parallel TB 结束位置
+
+    # 多 TB 间距（tb_parallel_multi 使用）
+    spacing_nm: 80           # 平行 TB 间距
+
+  # ========== TB 物理差异（第一阶段核心参数）==========
+  # TB 与 bulk 的差异主要体现在以下三个优先级的参数
+
+  physics:
+    # 优先级 1（最高）: 陷阱密度
+    trap_density_ratio: 33.3       # TB陷阱密度 / bulk陷阱密度
+    trap_energy_level_eV: 0.524    # 陷阱能级 [eV]
+
+    # 优先级 2: 迁移率降低
+    mobility_ratio: 0.5           # TB迁移率 / bulk迁移率 (0.1~0.5)
+    # 电子和空穴可分开设置
+    electron_mobility_ratio: 0.5
+    hole_mobility_ratio: 0.3
+
+    # 优先级 3: SRH 寿命缩短
+    lifetime_ratio: 0.1           # TB寿命 / bulk寿命 (0.01~0.1)
+
+    # 优先级 4（后续扩展）: 固定电荷
+    # fixed_charge_cm2: 1e12       # 固定电荷密度 [cm⁻²]
+
+  # ========== 参数版本跟踪 ==========
+  param_version:
+    tb_version: "v1.0"
+    source: "Estimation + literature"
+    notes: "陷阱密度和迁移率为估计值，需文献约束"
+    last_updated: "2026/04/17"
+
+# ========== TB Case 配置对照表 ==========
+# 用于快速查看各 case 的 TB 配置差异
+case_config:
+  baseline:
+    tb_enable: false
+    tb_mode: null
+    tb_count: 0
+
+  tb_vertical_single:
+    tb_enable: true
+    tb_mode: vertical
+    tb_count: 1
+    x_start_nm: 248.5
+    x_end_nm: 251.5
+
+  tb_parallel_single:
+    tb_enable: true
+    tb_mode: parallel
+    tb_count: 1
+    y_start_nm: 98.5
+    y_end_nm: 101.5
+
+  tb_double:
+    tb_enable: true
+    tb_mode: vertical
+    tb_count: 2
+    x_start_nm: [148.5, 348.5]
+    x_end_nm: [151.5, 351.5]
+
+  tb_parallel_multi:
+    tb_enable: true
+    tb_mode: parallel
+    tb_count: 4
+    spacing_nm: 80
+    y_positions_nm: [40, 120, 200, 280]

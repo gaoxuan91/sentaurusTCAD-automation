@@ -1,0 +1,68 @@
+# 输出参数模板
+# 2026/04/17
+
+output:
+  # ========== 目录结构（第一阶段必须有）==========
+  directory:
+    root: "output"               # 输出根目录
+    per_case: true               # 每个 case 独立子目录
+
+  # ========== 文件格式（第一阶段必须有）==========
+  formats:
+    image: "png"                 # 图像格式: png（预览）/ pdf（发表）
+    data: "tdr"                  # Sentaurus 格式: tdr
+    linecut: "csv"                # Linecut 数据: csv / txt
+
+  # ========== 每个 Case 的输出结构（第一阶段必须有）==========
+  case_structure:
+    figures:                     # 图像目录
+      - "potential.png"
+      - "electron_density.png"
+      - "hole_density.png"
+      - "current_density.png"
+
+    linecuts:                    # Linecut 数据目录
+      - "linecut_horizontal_y100.csv"
+      # - "linecut_vertical_x250.csv"
+    tdr:                         # TDR 文件目录
+      - "YOUR_PROJECT_NAME_*.tdr"
+
+    summary:                     # 汇总文件
+      - "iv_curve.csv"           # IV 曲线数据
+      - "simulation_summary.json"  # 仿真元数据
+
+  # ========== 图像命名规范（第一阶段必须有）==========
+  naming_convention:
+    pattern: "{case}_{quantity}.png"
+    examples:
+      - "baseline_potential.png"
+      - "tb_vertical_single_electron_density.png"
+      - "tb_parallel_multi_current_density.png"
+
+  # ========== IV 曲线格式（第一阶段必须有）==========
+  iv_curve:
+    columns:
+      - "voltage_V"              # 电压 [V]
+      - "current_A"              # 电流 [A]
+      - "current_density_A_cm2"  # 电流密度 [A/cm²]
+    unit: "A/cm^2"               # 电流密度单位
+
+  # ========== simulation_summary.json 内容（第一阶段必须有）==========
+  simulation_summary:
+    case_id: ""
+    case_type: ""                # baseline / tb_vertical_single / etc.
+    simulation_date: ""          # ISO 格式
+    solver_converged: true       # true / false
+    final_voltage_V: 1.0
+    output_quantities: []
+    param_versions:
+      bulk: ""
+      tb: ""
+      simulation: ""
+
+  # ========== 参数版本跟踪 ==========
+  param_version:
+    output_version: "v1.0"
+    source: "Initial setup"
+    notes: "输出格式和内容待 SVisual 验证后调整"
+    last_updated: "2026/04/17"

@@ -1,0 +1,14 @@
+"""Default configuration constants for the TCAD scheduler."""
+
+DEFAULT_MAX_WORKERS = 3
+DEFAULT_MAX_RETRIES = 3
+DEFAULT_LICENSE_PORT = 27020
+DEFAULT_API_PORT = 8899
+DEFAULT_POLL_INTERVAL_S = 30
+
+SENTAURUS_BIN = "/usr/synopsys/sentaurus/W-2024.09-SP1/bin"
+SENTAURUS_SETUP = "/usr/synopsys/sentaurus/W-2024.09-SP1/setup.sh"
+
+DARK_CURRENT_THRESHOLD = 1e-15
+EXPECTED_CURRENT_MIN = 1e-11
+EXPECTED_CURRENT_MAX = 5e-10

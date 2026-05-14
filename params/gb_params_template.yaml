@@ -1,0 +1,36 @@
+# GB (Grain Boundary) 参数模板
+# 第一阶段后置，第二阶段使用
+# 2026/04/17
+
+gb:
+  # ========== GB 启用控制（第二阶段）==========
+  enable: false              # true / false
+  count: 1                  # GB 数量
+
+  # ========== GB 几何（第二阶段）==========
+  geometry:
+    width_nm: 5.0           # TODO: GB 宽度需文献约束
+    # 位置参数待定义
+
+  # ========== GB 物理差异（第二阶段）==========
+  # GB 与 TB 的差异：GB 通常有更大的带隙偏移和固定电荷
+  physics:
+    # 陷阱参数
+    trap_density_ratio: 100       # TODO: GB陷阱密度估计值
+    trap_energy_level_eV: 0.6     # TODO: GB陷阱能级
+
+    # 迁移率
+    mobility_ratio: 0.3           # TODO: GB迁移率降低更明显
+
+    # 寿命
+    lifetime_ratio: 0.05          # TODO: GB寿命更短
+
+    # 固定电荷（GB 特有）
+    # fixed_charge_cm2: 1e13       # TODO: GB固定电荷密度
+
+  # ========== 参数版本跟踪 ==========
+  param_version:
+    gb_version: "placeholder"
+    source: "TODO"
+    notes: "第一阶段后置，需补充文献值"
+    last_updated: "2026/04/17"
