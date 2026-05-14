@@ -1,6 +1,7 @@
 # TCAD Sentaurus Autopilot
 
-Sentaurus TCAD 仿真自动化框架，集成 Claude Code LLM Agent，支持 Host-VM 分布式批量仿真调度。
+Sentaurus TCAD 仿真自动化框架，集成 Claude Code LLM Agent，支持 Host-VM 分布式批量仿真调度。希望能抛砖引玉，欢迎大家来看看
+
 
 ## 架构
 
